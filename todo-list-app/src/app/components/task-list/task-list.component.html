@@ -1,0 +1,13 @@
+<div>
+  <button (click)="onAddTask()">Add Task</button>
+
+  <div *ngFor="let task of tasks">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <p>Status: {{ task.isCompleted ? 'Completed' : 'Pending' }}</p>
+    <button (click)="onEditTask(task)">Edit</button>
+    <button (click)="onDeleteTask(task.id)">Delete</button>
+  </div>
+
+  <app-task-form *ngIf="selectedTask" [task]="selectedTask" (saveTask)="onSaveTask($event)"></app-task-form>
+</div>
